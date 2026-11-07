@@ -1,0 +1,95 @@
+name: Gerar dados de teste
+
+# Roda só quando você manda: aba Actions -> "Gerar dados de teste" -> Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      semente:
+        description: "Semente (mesma semente = mesmos dados)"
+        default: "42"
+        required: true
+      modo:
+        description: "normal = problemas do README | estresse = problemas novos de propósito"
+        type: choice
+        options: [normal, estresse]
+        default: normal
+      inicio:
+        description: "Primeiro mês (AAAA-MM)"
+        default: "2025-10"
+        required: true
+      fim:
+        description: "Último mês (AAAA-MM)"
+        default: "2026-10"
+        required: true
+      dias_ultimo_mes:
+        description: "Dias gerados no último mês (0 = mês completo)"
+        default: "7"
+        required: true
+      branch_destino:
+        description: "Branch onde os arquivos serão publicados (nunca use main)"
+        default: "dados-teste"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bloquear publicação na main
+        if: ${{ inputs.branch_destino == 'main' || inputs.branch_destino == 'master' }}
+        run: |
+          echo "A branch de destino não pode ser a main: os arquivos de produção seriam substituídos."
+          exit 1
+
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar os arquivos
+        run: |
+          python gerador/gerar_dados.py \
+            --semente "${{ inputs.semente }}" \
+            --modo "${{ inputs.modo }}" \
+            --inicio "${{ inputs.inicio }}" \
+            --fim "${{ inputs.fim }}" \
+            --dias-ultimo-mes "${{ inputs.dias_ultimo_mes }}" \
+            --saida saida | tee resumo.txt
+
+      - name: Publicar na branch de teste
+        run: |
+          DESTINO="${{ inputs.branch_destino }}"
+          mkdir publicar
+          cp saida/* publicar/
+          {
+            echo "# Dados de teste gerados automaticamente"
+            echo ""
+            echo "Não use estes arquivos como produção."
+            echo ""
+            echo "| Parâmetro | Valor |"
+            echo "|---|---|"
+            echo "| semente | ${{ inputs.semente }} |"
+            echo "| modo | ${{ inputs.modo }} |"
+            echo "| meses | ${{ inputs.inicio }} a ${{ inputs.fim }} |"
+            echo "| dias no último mês | ${{ inputs.dias_ultimo_mes }} |"
+            echo "| commit do gerador | ${GITHUB_SHA} |"
+            echo ""
+            echo '```'
+            cat resumo.txt
+            echo '```'
+          } > publicar/README.md
+
+          cd publicar
+          git init -q
+          git checkout -q -b "$DESTINO"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -q -m "Dados de teste: semente ${{ inputs.semente }}, modo ${{ inputs.modo }}"
+          git push -q --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "$DESTINO"
+          echo "Publicado em: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$DESTINO/vendas_2025-10.csv.gz"
