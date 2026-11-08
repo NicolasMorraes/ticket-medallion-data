@@ -88,6 +88,11 @@ PARCELAS_CREDITO = [(1, 50), (2, 15), (3, 15), (6, 12), (10, 8)]
 # Fator de preço por mês (o ticket médio cresce até junho e acomoda depois)
 FATOR_MES = {10: 1.00, 11: 1.00, 12: 1.03, 1: 1.01, 2: 0.94, 3: 1.03, 4: 1.13,
              5: 1.18, 6: 1.22, 7: 1.11, 8: 1.11, 9: 1.12}
+# Na continuação, os meses novos seguem o patamar do fim da produção (jul a out/2026)
+FATOR_CONTINUACAO = 1.12
+# Meses da produção cujo fator real difere da tabela (out/2026 seguiu o patamar de 2026)
+FATOR_PRODUCAO = {"2026-10": 1.12}
+CONTINUACAO = {"ativa": False}
 
 COLUNAS_ANTIGO = ["id_pedido", "item_seq", "data_pedido", "data_atualizacao", "status", "canal",
                   "id_cliente", "nome_cliente", "cpf", "email", "data_nascimento", "cidade", "uf",
@@ -198,7 +203,7 @@ def gerar_catalogo(rng, inicio):
 
 def estado_evento(ev, dia):
     """Data do evento e status vistos num determinado dia (respeitando adiamentos)."""
-    data_ev, atualizado, adiado = ev["data_evento"], ev["atualizado_em"], False
+    data_ev, atualizado, adiado = ev["data_evento"], ev["atualizado_em"], ev.get("adiado_prod", False)
     ad = ev["adiamento"]
     if ad and dia >= ad["quando"]:
         data_ev, adiado = ad["nova_data"], True
@@ -219,15 +224,19 @@ def linhas_eventos(rng, eventos, dia, estresse):
         if ev["abertura"] > dia + timedelta(days=200):
             continue
         data_ev, status, atualizado = estado_evento(ev, dia)
-        nome = f"  {ev['nome'].upper()}" if ev["nome_sujo"] else ev["nome"]
-        artista = ev["artista"] if ev["artista"] else nulo_texto(rng)
-        capacidade = f"{ev['capacidade']:,}".replace(",", ".") if ev["capacidade_ponto"] else str(ev["capacidade"])
+        bruto = ev.get("bruto")
+        if bruto:                                   # evento herdado da produção: mesmos textos
+            nome, artista, capacidade = bruto["nome_evento"], bruto["artista"], bruto["capacidade"]
+        else:
+            nome = f"  {ev['nome'].upper()}" if ev["nome_sujo"] else ev["nome"]
+            artista = ev["artista"] if ev["artista"] else nulo_texto(rng)
+            capacidade = f"{ev['capacidade']:,}".replace(",", ".") if ev["capacidade_ponto"] else str(ev["capacidade"])
         data_txt = data_ev.strftime("%d/%m/%Y") if ev["data_br"] else data_ev.isoformat()
         if estresse and rng.random() < 0.03:
             data_txt = data_ev.strftime("%Y/%m/%d")  # formato novo
         saida.append({
             "id_evento": ev["id_evento"], "nome_evento": nome, "artista": artista,
-            "categoria": ev["categoria"].lower() if ev["categoria_minuscula"] else ev["categoria"],
+            "categoria": bruto["categoria"] if bruto else (ev["categoria"].lower() if ev["categoria_minuscula"] else ev["categoria"]),
             "local": ev["local"], "cidade": ev["cidade"], "uf": ev["uf"], "capacidade": capacidade,
             "data_evento": data_txt, "abertura_vendas": ev["abertura"].isoformat(),
             "status_evento": status, "atualizado_em": atualizado.isoformat(),
@@ -252,6 +261,222 @@ def gerar_clientes(rng, n):
             "cidade": cidade, "uf": uf,
         })
     return clientes
+
+
+# --------------------------------------------------------------------------
+# Modo continuação: herda clientes e eventos dos arquivos da produção
+# --------------------------------------------------------------------------
+def abrir_texto(caminho):
+    """Abre CSV (gz ou não) detectando o encoding: UTF-8 com BOM ou ISO-8859-1."""
+    abrir = gzip.open if caminho.endswith(".gz") else open
+    with abrir(caminho, "rb") as f:
+        dados = f.read()
+    if dados.startswith(b"\xef\xbb\xbf"):
+        return dados.decode("utf-8-sig")
+    try:
+        return dados.decode("utf-8")
+    except UnicodeDecodeError:
+        return dados.decode("latin-1")
+
+
+def ler_csv(caminho):
+    return list(csv.DictReader(io.StringIO(abrir_texto(caminho), newline=""), delimiter=";"))
+
+
+def meses_existentes(pasta, prefixo, sufixo):
+    saida = []
+    for nome in os.listdir(pasta):
+        if nome.startswith(prefixo) and nome.endswith(sufixo):
+            saida.append(nome[len(prefixo):len(nome) - len(sufixo)])
+    return sorted(saida)
+
+
+def mais_frequente(contagem, valido=lambda v: True):
+    candidatos = [(n, v) for v, n in contagem.items() if v and valido(v)]
+    if not candidatos:
+        return None
+    return max(candidatos, key=lambda x: (x[0], x[1]))[1]
+
+
+def parse_data_evento(texto):
+    texto = texto.strip()
+    if "/" in texto:
+        d, m, a = texto.split("/")
+        return date(int(a), int(m), int(d)), True
+    return date.fromisoformat(texto), False
+
+
+def numero(texto):
+    t = texto.replace("R$", "").replace(" ", "")
+    if "," in t:
+        t = t.replace(".", "").replace(",", ".")
+    try:
+        return float(t)
+    except ValueError:
+        return None
+
+
+def carregar_producao(pasta, inicio):
+    """Lê clientes, eventos e estatísticas de venda dos arquivos da produção."""
+    meses_vendas = meses_existentes(pasta, "vendas_", ".csv.gz")
+    meses_ev = meses_existentes(pasta, "eventos_", ".csv")
+    if not meses_vendas or not meses_ev:
+        raise SystemExit(f"Nenhum arquivo de produção encontrado em '{pasta}'.")
+    sobrepostos = [m for m in meses_vendas if m >= inicio]
+    if sobrepostos:
+        raise SystemExit(f"O início ({inicio}) sobrepõe meses que já existem na produção: {sobrepostos}. "
+                         "No modo continuação, use um início depois do último mês da produção.")
+
+    # --- clientes e estatísticas por evento, a partir de todas as vendas
+    from collections import Counter, defaultdict
+    campos = ["nome_cliente", "cpf", "email", "data_nascimento", "cidade", "uf"]
+    cont = defaultdict(lambda: {c: Counter() for c in campos})
+    itens_ev, fatores_ev, nome_ev = Counter(), defaultdict(list), defaultdict(Counter)
+    for mes in meses_vendas:
+        for l in ler_csv(os.path.join(pasta, f"vendas_{mes}.csv.gz")):
+            cid = l.get("id_cliente", "")
+            if cid.startswith("CL-"):
+                c = cont[cid]
+                c["nome_cliente"][l["nome_cliente"].strip()] += 1
+                c["cpf"]["".join(ch for ch in l["cpf"] if ch.isdigit())] += 1
+                c["email"][l["email"].strip().lower()] += 1
+                c["data_nascimento"][l["data_nascimento"].strip()] += 1
+                c["cidade"][l["cidade"]] += 1
+                c["uf"][l["uf"].strip().upper()] += 1
+            eid = l.get("id_evento", "")
+            if not eid.startswith("EV-") or eid >= "EV-9000":
+                continue
+            itens_ev[eid] += 1
+            nome_ev[eid][l["nome_evento"]] += 1
+            if l.get("tipo_ingresso") == "INTEIRA":
+                preco = numero(l.get("preco_unitario", ""))
+                fator_mes = FATOR_PRODUCAO.get(mes, FATOR_MES[int(mes[5:7])])
+                if preco:
+                    fatores_ev[eid].append((l["setor"], preco, fator_mes))
+
+    clientes = []
+    for cid in sorted(cont):
+        c = cont[cid]
+        cpf = mais_frequente(c["cpf"], lambda v: len(v) == 11) or (mais_frequente(c["cpf"]) or "").zfill(11)
+        email = mais_frequente(c["email"], lambda v: "@" in v and "." in v.split("@")[-1])
+        clientes.append({
+            "id_cliente": cid, "nome": mais_frequente(c["nome_cliente"]), "cpf": cpf,
+            "email": email or f"{cid.lower()}@gmail.com",
+            "nascimento": mais_frequente(c["data_nascimento"]),
+            "cidade": mais_frequente(c["cidade"]), "uf": mais_frequente(c["uf"]),
+        })
+
+    # --- eventos: último retrato do catálogo
+    ultimo = meses_ev[-1]
+    linhas = ler_csv(os.path.join(pasta, f"eventos_{ultimo}.csv"))
+    # dias de venda já observados, para estimar a popularidade
+    primeiro_mes = date(int(meses_vendas[0][:4]), int(meses_vendas[0][5:7]), 1)
+    a, m = int(meses_vendas[-1][:4]), int(meses_vendas[-1][5:7])
+    ultimo_dia = date(a, m, calendar.monthrange(a, m)[1])
+    eventos, taxas = [], {}
+    for l in linhas:
+        eid = l["id_evento"]
+        data_ev, data_br = parse_data_evento(l["data_evento"])
+        abertura = date.fromisoformat(l["abertura_vendas"][:10])
+        categoria = l["categoria"].strip().upper()
+        # fator de preço: preço observado / preço base do setor / fator do mês
+        bases = {s: b for s, b, _ in SETORES[categoria]}
+        obs = sorted(p / (bases[s] * fm) for s, p, fm in fatores_ev[eid] if s in bases)
+        fator = obs[len(obs) // 2] if obs else None
+        ini, fim = max(abertura, primeiro_mes), min(data_ev, ultimo_dia)
+        dias = (fim - ini).days + 1
+        if itens_ev[eid] and dias > 0:
+            taxas[eid] = itens_ev[eid] / dias
+        nome_limpo = mais_frequente(nome_ev[eid]) or l["nome_evento"].strip()
+        eventos.append({
+            "id_evento": eid, "nome": nome_limpo, "artista": l["artista"], "categoria": categoria,
+            "local": l["local"], "cidade": l["cidade"], "uf": l["uf"],
+            "capacidade": int(l["capacidade"].replace(".", "")),
+            "data_evento": data_ev, "abertura": abertura,
+            "atualizado_em": datetime.fromisoformat(l["atualizado_em"]),
+            "popularidade": None, "fator_preco": fator,
+            "nome_sujo": False, "categoria_minuscula": False, "capacidade_ponto": False,
+            "data_br": data_br, "adiamento": None,
+            "adiado_prod": l["status_evento"] == "ADIADO",
+            "bruto": {k: l[k] for k in ("nome_evento", "artista", "categoria", "capacidade")},
+        })
+    # popularidade na mesma escala do gerador (média da Pareto(1.6) ≈ 2,67)
+    media = sum(taxas.values()) / len(taxas) if taxas else 1.0
+    for ev in eventos:
+        t = taxas.get(ev["id_evento"])
+        ev["popularidade"] = (t / media) * 2.67 if t else None
+    return clientes, eventos, meses_vendas[-1]
+
+
+def completar_eventos_herdados(rng, eventos):
+    for ev in eventos:
+        if ev["popularidade"] is None:
+            ev["popularidade"] = rng.paretovariate(1.6)
+        if ev["fator_preco"] is None:
+            ev["fator_preco"] = rng.uniform(0.7, 1.6)
+
+
+def gerar_eventos_novos(rng, meses, inicio_id, por_mes):
+    """Eventos novos (EV-0151 em diante) que abrem vendas ao longo dos meses gerados."""
+    novos, i = [], inicio_id
+    for mes in meses:
+        a, m = map(int, mes.split("-"))
+        ini = date(a, m, 1)
+        fim = date(a, m, calendar.monthrange(a, m)[1])
+        for _ in range(por_mes):
+            cat = escolher(rng, [("SHOW", 108), ("TEATRO", 23), ("FESTIVAL", 12), ("ESPORTE", 7)])
+            ev = gerar_catalogo_um(rng, cat, i)
+            # o primeiro mês recebe aberturas concentradas no dia 1 para não faltar oferta
+            abertura = ini if (mes == meses[0] and rng.random() < 0.5) else ini + timedelta(days=rng.randint(0, (fim - ini).days))
+            ev["abertura"] = abertura
+            ev["data_evento"] = abertura + timedelta(days=rng.randint(30, 150))
+            ev["atualizado_em"] = datetime(abertura.year, abertura.month, abertura.day, 9, 0, tzinfo=TZ_BR)
+            if rng.random() < 0.05:
+                ev["adiamento"] = {
+                    "quando": ev["data_evento"] - timedelta(days=rng.randint(5, 25)),
+                    "nova_data": ev["data_evento"] + timedelta(days=rng.randint(30, 110)),
+                }
+            novos.append(ev)
+            i += 1
+    return novos
+
+
+def gerar_catalogo_um(rng, cat, i):
+    if cat == "SHOW":
+        artista = rng.choice(ARTISTAS)
+        nome = artista if rng.random() < 0.1 else f"{artista} - Turnê {rng.choice(TURNES)}"
+        local = rng.choice([l for l in LOCAIS if l[3] in ("arena", "parque")])
+    elif cat == "TEATRO":
+        artista = f"Cia. {rng.choice(SOBRENOMES)}"
+        nome = rng.choice(PECAS)
+        local = rng.choice([l for l in LOCAIS if l[3] == "teatro"])
+    elif cat == "FESTIVAL":
+        artista = "Vários"
+        nome = rng.choice(FESTIVAIS)
+        local = rng.choice([l for l in LOCAIS if l[3] in ("parque", "arena")])
+    else:
+        artista = ""
+        mandante, visitante = rng.sample(TIMES, 2)
+        nome = f"{mandante} x {visitante}"
+        local = rng.choice([l for l in LOCAIS if l[3] in ("estadio", "arena")])
+    capacidade = {"teatro": rng.choice([1200, 1500, 1800, 2200]),
+                  "estadio": rng.choice([45000, 60000]),
+                  "parque": rng.choice([30000, 40000, 50000])}.get(local[3], rng.choice([7000, 12000, 18000, 20000, 22000]))
+    return {
+        "id_evento": f"EV-{i:04d}", "nome": nome, "artista": artista, "categoria": cat,
+        "local": local[0], "cidade": local[1], "uf": local[2], "capacidade": capacidade,
+        "popularidade": rng.paretovariate(1.6), "fator_preco": rng.uniform(0.7, 1.6),
+        "nome_sujo": rng.random() < 0.10, "categoria_minuscula": rng.random() < 0.05,
+        "capacidade_ponto": rng.random() < 0.14, "data_br": rng.random() < 0.11,
+        "adiamento": None,
+    }
+
+
+def gerar_clientes_novos(rng, n, inicio_id):
+    novos = gerar_clientes(rng, n)
+    for k, c in enumerate(novos):
+        c["id_cliente"] = f"CL-{inicio_id + k:06d}"
+    return novos
 
 
 # --------------------------------------------------------------------------
@@ -295,7 +520,8 @@ def montar_pedido(rng, dia, n, disponiveis, pesos, clientes):
             tipo = "CORTESIA"
         else:
             tipo = escolher(rng, [("INTEIRA", 64), ("MEIA", 36)])
-        preco_inteira = round(base * evento["fator_preco"] * FATOR_MES[dia.month] / 0.4) * 0.4
+        fator_mes = FATOR_CONTINUACAO if CONTINUACAO["ativa"] else FATOR_MES[dia.month]
+        preco_inteira = round(base * evento["fator_preco"] * fator_mes / 0.4) * 0.4
         preco = 0.0 if tipo == "CORTESIA" else (preco_inteira / 2 if tipo == "MEIA" else preco_inteira)
         itens.append({"seq": seq, "setor": setor, "tipo": tipo, "quantidade": escolher(rng, [(1, 45), (2, 40), (3, 8), (4, 7)]),
                       "preco": round(preco, 2)})
@@ -513,6 +739,10 @@ def main():
     p.add_argument("--meses-iso", default="2026-01,2026-02")
     p.add_argument("--modo", choices=["normal", "estresse"], default="normal")
     p.add_argument("--saida", default="saida")
+    p.add_argument("--continuar-de", default="",
+                   help="pasta com os arquivos da produção; herda clientes e eventos e gera só meses novos")
+    p.add_argument("--eventos-novos-por-mes", type=int, default=12)
+    p.add_argument("--clientes-novos", type=int, default=10000)
     a = p.parse_args()
 
     os.makedirs(a.saida, exist_ok=True)
@@ -520,8 +750,24 @@ def main():
     estresse = a.modo == "estresse"
     meses = meses_entre(a.inicio, a.fim)
 
-    eventos = gerar_catalogo(rng, a.inicio)
-    clientes = gerar_clientes(rng, a.clientes)
+    if a.continuar_de:
+        CONTINUACAO["ativa"] = True
+        clientes, eventos, ultimo_mes = carregar_producao(a.continuar_de, a.inicio)
+        completar_eventos_herdados(rng, eventos)
+        maior_ev = max(int(e["id_evento"][3:]) for e in eventos)
+        maior_cl = max(int(c["id_cliente"][3:]) for c in clientes)
+        fatores_herdados = [e["fator_preco"] for e in eventos]
+        novos_ev = gerar_eventos_novos(rng, meses, maior_ev + 1, a.eventos_novos_por_mes)
+        for e in novos_ev:   # preços dos eventos novos na mesma faixa dos herdados
+            e["fator_preco"] = rng.choice(fatores_herdados) * rng.uniform(0.9, 1.1)
+        eventos += novos_ev
+        clientes += gerar_clientes_novos(rng, a.clientes_novos, maior_cl + 1)
+        print(f"Continuação da produção (último mês: {ultimo_mes}) | "
+              f"{len(clientes) - a.clientes_novos} clientes herdados + {a.clientes_novos} novos | "
+              f"{maior_ev} eventos herdados + {len(eventos) - maior_ev} novos")
+    else:
+        eventos = gerar_catalogo(rng, a.inicio)
+        clientes = gerar_clientes(rng, a.clientes)
     meses_iso = [m.strip() for m in a.meses_iso.split(",") if m.strip()]
 
     pendentes, total_pedidos, arquivos = {}, 0, []
