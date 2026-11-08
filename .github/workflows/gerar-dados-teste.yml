@@ -13,21 +13,30 @@ on:
         type: choice
         options: [normal, estresse]
         default: normal
+      continuar:
+        description: "sim = continua a produção (mesmos clientes e eventos, só meses novos) | nao = conjunto independente"
+        type: choice
+        options: [sim, nao]
+        default: sim
       inicio:
-        description: "Primeiro mês (AAAA-MM)"
-        default: "2025-10"
+        description: "Primeiro mês (AAAA-MM). Na continuação, depois do último mês da produção"
+        default: "2026-11"
         required: true
       fim:
         description: "Último mês (AAAA-MM)"
-        default: "2026-10"
+        default: "2026-12"
         required: true
       dias_ultimo_mes:
         description: "Dias gerados no último mês (0 = mês completo)"
-        default: "7"
+        default: "0"
+        required: true
+      clientes_novos:
+        description: "Clientes novos criados na continuação (10000 = cerca de 20% dos pedidos)"
+        default: "10000"
         required: true
       branch_destino:
         description: "Branch onde os arquivos serão publicados (nunca use main)"
-        default: "dados-teste"
+        default: "dados-complemento"
         required: true
 
 permissions:
@@ -52,16 +61,23 @@ jobs:
           python-version: "3.12"
 
       - name: Gerar os arquivos
+        shell: bash
         run: |
+          EXTRA=""
+          if [ "${{ inputs.continuar }}" = "sim" ]; then
+            EXTRA="--continuar-de ."
+          fi
           python gerador/gerar_dados.py \
             --semente "${{ inputs.semente }}" \
             --modo "${{ inputs.modo }}" \
             --inicio "${{ inputs.inicio }}" \
             --fim "${{ inputs.fim }}" \
             --dias-ultimo-mes "${{ inputs.dias_ultimo_mes }}" \
-            --saida saida | tee resumo.txt
+            --clientes-novos "${{ inputs.clientes_novos }}" \
+            --saida saida $EXTRA | tee resumo.txt
 
       - name: Publicar na branch de teste
+        shell: bash
         run: |
           DESTINO="${{ inputs.branch_destino }}"
           mkdir publicar
@@ -75,7 +91,9 @@ jobs:
             echo "|---|---|"
             echo "| semente | ${{ inputs.semente }} |"
             echo "| modo | ${{ inputs.modo }} |"
+            echo "| continuação da produção | ${{ inputs.continuar }} |"
             echo "| meses | ${{ inputs.inicio }} a ${{ inputs.fim }} |"
+            echo "| clientes novos | ${{ inputs.clientes_novos }} |"
             echo "| dias no último mês | ${{ inputs.dias_ultimo_mes }} |"
             echo "| commit do gerador | ${GITHUB_SHA} |"
             echo ""
@@ -90,6 +108,6 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -q -m "Dados de teste: semente ${{ inputs.semente }}, modo ${{ inputs.modo }}"
+          git commit -q -m "Dados de teste: semente ${{ inputs.semente }}, modo ${{ inputs.modo }}, continuação ${{ inputs.continuar }}"
           git push -q --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "$DESTINO"
-          echo "Publicado em: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$DESTINO/vendas_2025-10.csv.gz"
+          echo "Publicado em: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$DESTINO/vendas_${{ inputs.inicio }}.csv.gz"
