@@ -1,0 +1,175 @@
+﻿id_evento;nome_evento;artista;categoria;local;cidade;uf;capacidade;data_evento;abertura_vendas;status_evento;atualizado_em
+EV-0001;  CORAL SINFÔNICO VÉRTICE - TURNÊ LUZ;Coral Sinfônico Vértice;SHOW;Arena Serra Verde;Belo Horizonte;MG;20000;22/10/2025;2025-07-20;REALIZADO;2025-07-20T09:00:00-03:00
+EV-0002;João Ladeira - Turnê Luz;João Ladeira;SHOW;Hall Campinas;Campinas;SP;7000;2026-07-31;2026-06-03;REALIZADO;2026-06-03T09:00:00-03:00
+EV-0003;Gaviões do Sul x Falcões AC;NULL;ESPORTE;Arena Horizonte;São Paulo;SP;45000;2025-11-03;2025-07-16;REALIZADO;2025-07-16T09:00:00-03:00
+EV-0004;O Último Ato;Cia. Costa;TEATRO;Teatro Lumière;São Paulo;SP;1800;2026-08-10;2026-07-05;REALIZADO;2026-07-05T09:00:00-03:00
+EV-0005;  DJ NEON TROPICAL - TURNÊ VIAGEM;DJ Neon Tropical;SHOW;Centro Cerrado;Brasília;DF;18000;2026-01-25;2025-10-15;REALIZADO;2025-10-15T09:00:00-03:00
+EV-0006;Rádio Satélite - Turnê Agora;Rádio Satélite;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-10-20;2026-09-16;REALIZADO;2026-09-16T09:00:00-03:00
+EV-0007;Musical Estrelas;Cia. Souza;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-08-18;2026-04-11;REALIZADO;2026-05-26T10:00:00-03:00
+EV-0008;Ana Vitral - Turnê Infinito;Ana Vitral;SHOW;Arena Farol;Salvador;BA;22000;2026-08-10;2026-04-30;REALIZADO;2026-04-30T09:00:00-03:00
+EV-0009;Ana Vitral - Turnê Luz;Ana Vitral;SHOW;Arena Ipê;Goiânia;GO;14000;2026-05-27;2026-01-28;REALIZADO;2026-01-28T09:00:00-03:00
+EV-0010;Trio Ventania - Turnê Infinito;Trio Ventania;SHOW;Arena Recifes;Recife;PE;16000;2025-11-30;2025-09-27;REALIZADO;2025-09-27T09:00:00-03:00
+EV-0011;Falcões AC x Gaviões do Sul;NULL;ESPORTE;Arena Horizonte;São Paulo;SP;45.000;24/03/2026;2026-02-02;REALIZADO;2026-02-02T09:00:00-03:00
+EV-0012;Maré Cheia - Turnê Infinito;Maré Cheia;SHOW;Centro Cerrado;Brasília;DF;18000;2026-01-03;2025-11-24;REALIZADO;2025-11-24T09:00:00-03:00
+EV-0013;Lua de Cristal - Turnê Agora;Lua de Cristal;SHOW;Arena dos Pampas;Porto Alegre;RS;25000;2026-12-06;2026-08-02;ADIADO;2026-08-20T10:00:00-03:00
+EV-0014;Os Sertanejos do Vale - Turnê Luz;Os Sertanejos do Vale;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-10-23;2026-08-01;REALIZADO;2026-08-01T09:00:00-03:00
+EV-0015;Orquestra Brisa - Turnê Luz;Orquestra Brisa;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-09-30;2026-06-26;REALIZADO;2026-06-26T09:00:00-03:00
+EV-0016;Rádio Satélite - Turnê Agora;Rádio Satélite;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-11-04;2026-07-11;REALIZADO;2026-07-11T09:00:00-03:00
+EV-0017;Stand-up Noite Leve;Cia. Moreira;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1500;2026-08-12;2026-06-20;REALIZADO;2026-06-20T09:00:00-03:00
+EV-0018;Orquestra Brisa - Turnê Agora;Orquestra Brisa;SHOW;Espaço Ilha;Florianópolis;SC;9000;2026-04-08;2026-01-01;REALIZADO;2026-01-01T09:00:00-03:00
+EV-0019;Stand-up Noite Leve;Cia. Barbosa;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1500;2027-02-24;2026-09-10;ADIADO;2026-09-24T10:00:00-03:00
+EV-0020;Festival Som da Cidade;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-12-09;2026-10-23;A_REALIZAR;2026-10-23T09:00:00-03:00
+EV-0021;O Mágico da Ilha;Cia. Souza;TEATRO;Teatro Lumière;São Paulo;SP;1800;2026-01-19;2025-10-03;REALIZADO;2025-10-03T09:00:00-03:00
+EV-0022;O Último Ato;Cia. Gomes;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1500;2026-01-18;2025-10-28;REALIZADO;2025-10-28T09:00:00-03:00
+EV-0023;Stand-up Noite Leve;Cia. Rocha;TEATRO;Teatro Jangada;Fortaleza;CE;2.200;04/10/2026;2026-06-11;REALIZADO;2026-06-11T09:00:00-03:00
+EV-0024;Banda Farol Azul - Turnê Agora;Banda Farol Azul;SHOW;Arena Ipê;Goiânia;GO;14000;2025-11-28;2025-08-01;REALIZADO;2025-08-01T09:00:00-03:00
+EV-0025;Musical Estrelas;Cia. Gomes;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-02-20;2025-12-19;REALIZADO;2025-12-19T09:00:00-03:00
+EV-0026;Festival Som da Cidade;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-11-04;2026-09-05;REALIZADO;2026-09-05T09:00:00-03:00
+EV-0027;  O MÁGICO DA ILHA;Cia. Dias;TEATRO;Teatro Lumière;São Paulo;SP;1800;2026-06-03;2026-05-04;REALIZADO;2026-05-04T09:00:00-03:00
+EV-0028;Lua de Cristal - Turnê Infinito;Lua de Cristal;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-08-09;2026-07-04;REALIZADO;2026-07-04T09:00:00-03:00
+EV-0029;Duo Cafezal - Turnê Agora;Duo Cafezal;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2025-12-21;2025-09-10;REALIZADO;2025-09-10T09:00:00-03:00
+EV-0030;Rock Cardeal - Turnê Viagem;Rock Cardeal;SHOW;Arena Ipê;Goiânia;GO;14000;2026-02-02;2025-11-04;REALIZADO;2025-11-04T09:00:00-03:00
+EV-0031;Falcões AC x Tubarões FC;NULL;ESPORTE;Arena Horizonte;São Paulo;SP;45.000;2025-11-19;2025-09-08;REALIZADO;2025-09-08T09:00:00-03:00
+EV-0032;Rock Cardeal - Turnê Viagem;Rock Cardeal;SHOW;Arena Farol;Salvador;BA;22000;2026-11-17;2026-08-26;REALIZADO;2026-08-26T09:00:00-03:00
+EV-0033;Banda Farol Azul - Turnê Luz;Banda Farol Azul;SHOW;Arena Serra Verde;Belo Horizonte;MG;20.000;2026-12-06;2026-08-23;A_REALIZAR;2026-08-23T09:00:00-03:00
+EV-0034;Festival Noites de Ouro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80.000;2026-01-29;2025-12-11;REALIZADO;2025-12-11T09:00:00-03:00
+EV-0035;Tubarões FC x Leões do Norte;NULL;ESPORTE;Estádio Maré Alta;Rio de Janeiro;RJ;60000;2026-04-24;2026-02-12;REALIZADO;2026-02-12T09:00:00-03:00
+EV-0036;Maré Cheia - Turnê Viagem;Maré Cheia;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-05-11;2026-03-30;REALIZADO;2026-03-30T09:00:00-03:00
+EV-0037;João Ladeira - Turnê Agora;João Ladeira;SHOW;Estádio Maré Alta;Rio de Janeiro;RJ;60.000;2026-12-08;2026-09-06;A_REALIZAR;2026-09-06T09:00:00-03:00
+EV-0038;Rádio Satélite - Turnê Infinito;Rádio Satélite;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-05-02;2026-01-17;REALIZADO;2026-01-17T09:00:00-03:00
+EV-0039;Maré Cheia - Turnê Infinito;Maré Cheia;SHOW;Centro Cerrado;Brasília;DF;18.000;2026-03-07;2026-01-06;REALIZADO;2026-01-06T09:00:00-03:00
+EV-0040;Coletivo Asfalto - Turnê Luz;Coletivo Asfalto;show;Arena Farol;Salvador;BA;22000;2026-10-17;2026-07-23;REALIZADO;2026-07-23T09:00:00-03:00
+EV-0041;Stand-up Noite Leve;Cia. Dias;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-06-08;2026-03-29;REALIZADO;2026-03-29T09:00:00-03:00
+EV-0042;Rock Cardeal - Turnê Raízes;Rock Cardeal;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-10-28;2026-09-03;REALIZADO;2026-09-03T09:00:00-03:00
+EV-0043;Os Sertanejos do Vale - Turnê Raízes;Os Sertanejos do Vale;SHOW;Arena Farol;Salvador;BA;22000;2026-04-07;2026-01-10;REALIZADO;2026-01-10T09:00:00-03:00
+EV-0044;Maré Cheia - Turnê Viagem;Maré Cheia;SHOW;Arena Serra Verde;Belo Horizonte;MG;20000;2026-08-25;2026-06-13;REALIZADO;2026-06-13T09:00:00-03:00
+EV-0045;Lina Prisma - Turnê Viagem;Lina Prisma;SHOW;Arena Recifes;Recife;PE;16.000;29/08/2026;2026-07-13;REALIZADO;2026-07-13T09:00:00-03:00
+EV-0046;O Último Ato;Cia. Ribeiro;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1.500;2026-06-11;2026-03-05;REALIZADO;2026-03-05T09:00:00-03:00
+EV-0047;DJ Neon Tropical - Turnê Viagem;DJ Neon Tropical;SHOW;Arena Recifes;Recife;PE;16000;2026-03-31;2025-12-09;REALIZADO;2025-12-09T09:00:00-03:00
+EV-0048;Coral Sinfônico Vértice - Turnê Infinito;Coral Sinfônico Vértice;SHOW;Centro Cerrado;Brasília;DF;18000;2027-02-10;2026-07-10;ADIADO;2026-09-16T10:00:00-03:00
+EV-0049;Stand-up Noite Leve;Cia. Araújo;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-06-15;2026-04-14;REALIZADO;2026-04-14T09:00:00-03:00
+EV-0050;Os Sertanejos do Vale - Turnê Agora;Os Sertanejos do Vale;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-12-22;2026-10-01;A_REALIZAR;2026-10-01T09:00:00-03:00
+EV-0051;Lina Prisma - Turnê Luz;Lina Prisma;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-05-24;2026-04-24;REALIZADO;2026-04-24T09:00:00-03:00
+EV-0052;Duo Cafezal - Turnê Luz;Duo Cafezal;SHOW;Arena Ipê;Goiânia;GO;14000;2025-12-01;2025-10-27;REALIZADO;2025-10-27T09:00:00-03:00
+EV-0053;O Último Ato;Cia. Teixeira;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1500;2025-10-28;2025-09-25;REALIZADO;2025-09-25T09:00:00-03:00
+EV-0054;Banda Farol Azul - Turnê Agora;Banda Farol Azul;SHOW;Espaço Ilha;Florianópolis;SC;9000;2026-05-06;2026-01-26;REALIZADO;2026-01-26T09:00:00-03:00
+EV-0055;Coletivo Asfalto - Turnê Viagem;Coletivo Asfalto;SHOW;Arena Horizonte;São Paulo;SP;45000;03/07/2026;2026-04-01;REALIZADO;2026-04-01T09:00:00-03:00
+EV-0056;Maré Cheia - Turnê Raízes;Maré Cheia;SHOW;Estádio Maré Alta;Rio de Janeiro;RJ;60000;2026-02-03;2025-10-15;REALIZADO;2025-10-15T09:00:00-03:00
+EV-0057;DJ Neon Tropical - Turnê Infinito;DJ Neon Tropical;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2025-12-02;2025-10-03;REALIZADO;2025-10-03T09:00:00-03:00
+EV-0058;Festival Som da Cidade;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80.000;16/09/2026;2026-06-23;REALIZADO;2026-06-23T09:00:00-03:00
+EV-0059;Duo Cafezal - Turnê Infinito;Duo Cafezal;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2025-11-29;2025-08-13;REALIZADO;2025-08-13T09:00:00-03:00
+EV-0060;Os Navegantes - Turnê Luz;Os Navegantes;SHOW;Arena dos Pampas;Porto Alegre;RS;25000;2026-04-14;2026-02-26;REALIZADO;2026-02-26T09:00:00-03:00
+EV-0061;Maré Cheia - Turnê Raízes;Maré Cheia;SHOW;Arena Recifes;Recife;PE;16000;2026-07-15;2026-04-14;REALIZADO;2026-04-14T09:00:00-03:00
+EV-0062;Banda Farol Azul - Turnê Agora;Banda Farol Azul;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-07-27;2026-05-26;REALIZADO;2026-05-26T09:00:00-03:00
+EV-0063;Festival Verão Sonoro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-05-29;2026-03-06;REALIZADO;2026-03-06T09:00:00-03:00
+EV-0064;Coral Sinfônico Vértice - Turnê Viagem;Coral Sinfônico Vértice;SHOW;Centro Cerrado;Brasília;DF;18000;2026-09-03;2026-06-01;REALIZADO;2026-06-01T09:00:00-03:00
+EV-0065;Os Navegantes - Turnê Agora;Os Navegantes;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-01-07;2025-12-06;REALIZADO;2025-12-06T09:00:00-03:00
+EV-0066;Lina Prisma - Turnê Luz;Lina Prisma;SHOW;Arena Recifes;Recife;PE;16000;04/05/2026;2026-02-16;REALIZADO;2026-02-16T09:00:00-03:00
+EV-0067;Ana Vitral - Turnê Viagem;Ana Vitral;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-07-06;2026-05-18;REALIZADO;2026-05-18T09:00:00-03:00
+EV-0068;Banda Aurora Boreal - Turnê Viagem;Banda Aurora Boreal;show;Hall Campinas;Campinas;SP;7000;2026-09-13;2026-06-03;REALIZADO;2026-06-03T09:00:00-03:00
+EV-0069;Os Navegantes - Turnê Raízes;Os Navegantes;show;Arena Ipê;Goiânia;GO;14000;2026-07-13;2026-05-23;REALIZADO;2026-05-23T09:00:00-03:00
+EV-0070;Os Sertanejos do Vale - Turnê Viagem;Os Sertanejos do Vale;SHOW;Centro Cerrado;Brasília;DF;18000;2025-11-28;2025-10-03;REALIZADO;2025-10-03T09:00:00-03:00
+EV-0071;Festival Som da Cidade;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-11-07;2026-07-23;REALIZADO;2026-07-23T09:00:00-03:00
+EV-0072;Maré Cheia - Turnê Luz;Maré Cheia;SHOW;Arena Recifes;Recife;PE;16000;2026-04-27;2026-01-01;REALIZADO;2026-01-01T09:00:00-03:00
+EV-0073;Ana Vitral - Turnê Agora;Ana Vitral;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-02-27;2025-11-19;REALIZADO;2025-11-19T09:00:00-03:00
+EV-0074;Banda Aurora Boreal - Turnê Viagem;Banda Aurora Boreal;SHOW;Espaço Ilha;Florianópolis;SC;9.000;2026-08-27;2026-05-31;REALIZADO;2026-05-31T09:00:00-03:00
+EV-0075;Pedra Solar - Turnê Infinito;Pedra Solar;SHOW;Arena Farol;Salvador;BA;22000;2026-04-04;2025-12-06;REALIZADO;2025-12-06T09:00:00-03:00
+EV-0076;Banda Farol Azul - Turnê Raízes;Banda Farol Azul;SHOW;Centro Cerrado;Brasília;DF;18000;2026-11-12;2026-08-12;REALIZADO;2026-08-12T09:00:00-03:00
+EV-0077;MC Horizonte - Turnê Luz;MC Horizonte;SHOW;Hall Campinas;Campinas;SP;7000;2026-12-13;2026-08-31;A_REALIZAR;2026-08-31T09:00:00-03:00
+EV-0078;Os Sertanejos do Vale - Turnê Infinito;Os Sertanejos do Vale;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-08-20;2026-06-30;REALIZADO;2026-06-30T09:00:00-03:00
+EV-0079;Coletivo Asfalto - Turnê Viagem;Coletivo Asfalto;SHOW;Arena Farol;Salvador;BA;22000;2026-05-05;2026-01-21;REALIZADO;2026-01-21T09:00:00-03:00
+EV-0080;Festival Noites de Ouro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-12-21;2026-10-14;A_REALIZAR;2026-10-14T09:00:00-03:00
+EV-0081;O Mágico da Ilha;Cia. Nascimento;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-04-18;2026-03-10;REALIZADO;2026-03-10T09:00:00-03:00
+EV-0082;Coral Sinfônico Vértice - Turnê Agora;Coral Sinfônico Vértice;SHOW;Arena Farol;Salvador;BA;22000;2026-05-26;2026-04-11;REALIZADO;2026-04-11T09:00:00-03:00
+EV-0083;Festival Verão Sonoro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80.000;2026-09-20;2026-08-21;REALIZADO;2026-08-21T09:00:00-03:00
+EV-0084;O Último Ato;Cia. Nascimento;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1500;2026-07-22;2026-05-04;REALIZADO;2026-05-04T09:00:00-03:00
+EV-0085;João Ladeira - Turnê Luz;João Ladeira;SHOW;Hall Campinas;Campinas;SP;7000;2026-03-07;2025-11-18;REALIZADO;2025-11-18T09:00:00-03:00
+EV-0086;João Ladeira - Turnê Viagem;João Ladeira;SHOW;Estádio Maré Alta;Rio de Janeiro;RJ;60000;2025-11-08;2025-08-06;REALIZADO;2025-08-06T09:00:00-03:00
+EV-0087;João Ladeira - Turnê Viagem;João Ladeira;SHOW;Arena Serra Verde;Belo Horizonte;MG;20.000;02/08/2026;2026-03-30;REALIZADO;2026-04-20T10:00:00-03:00
+EV-0088;Gaviões do Sul x Falcões AC;null;ESPORTE;Estádio Maré Alta;Rio de Janeiro;RJ;60.000;18/05/2026;2026-03-30;REALIZADO;2026-03-30T09:00:00-03:00
+EV-0089;Lina Prisma - Turnê Viagem;Lina Prisma;SHOW;Hall Campinas;Campinas;SP;7000;25/04/2026;2026-02-20;REALIZADO;2026-02-20T09:00:00-03:00
+EV-0090;Trio Ventania - Turnê Viagem;Trio Ventania;SHOW;Arena Serra Verde;Belo Horizonte;MG;20000;2026-04-21;2025-11-20;REALIZADO;2026-01-06T10:00:00-03:00
+EV-0091;Maré Cheia - Turnê Infinito;Maré Cheia;SHOW;Arena dos Pampas;Porto Alegre;RS;25.000;2026-11-25;2026-10-16;REALIZADO;2026-10-16T09:00:00-03:00
+EV-0092;Festival Verão Sonoro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80.000;2025-12-11;2025-10-04;REALIZADO;2025-10-04T09:00:00-03:00
+EV-0093;Maré Cheia - Turnê Agora;Maré Cheia;SHOW;Centro Cerrado;Brasília;DF;18000;2025-11-26;2025-10-08;REALIZADO;2025-10-08T09:00:00-03:00
+EV-0094;DJ Neon Tropical - Turnê Viagem;DJ Neon Tropical;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-02-03;2025-12-17;REALIZADO;2025-12-17T09:00:00-03:00
+EV-0095;Banda Aurora Boreal - Turnê Viagem;Banda Aurora Boreal;SHOW;Arena Serra Verde;Belo Horizonte;MG;20.000;2026-07-10;2026-05-08;REALIZADO;2026-05-08T09:00:00-03:00
+EV-0096;Rádio Satélite - Turnê Infinito;Rádio Satélite;SHOW;Hall Campinas;Campinas;SP;7000;2026-05-11;2026-04-09;REALIZADO;2026-04-09T09:00:00-03:00
+EV-0097;Os Sertanejos do Vale - Turnê Viagem;Os Sertanejos do Vale;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2025-11-19;2025-09-28;REALIZADO;2025-09-28T09:00:00-03:00
+EV-0098;Festival Verão Sonoro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2025-10-21;2025-09-07;REALIZADO;2025-09-07T09:00:00-03:00
+EV-0099;DJ Neon Tropical - Turnê Agora;DJ Neon Tropical;SHOW;Arena Ipê;Goiânia;GO;14000;2026-01-29;2025-12-07;REALIZADO;2025-12-07T09:00:00-03:00
+EV-0100;  TUBARÕES FC X FALCÕES AC;null;ESPORTE;Estádio Maré Alta;Rio de Janeiro;RJ;60000;2026-11-06;2026-07-16;REALIZADO;2026-07-16T09:00:00-03:00
+EV-0101;João Ladeira - Turnê Luz;João Ladeira;SHOW;Hall Campinas;Campinas;SP;7000;06/05/2026;2026-02-17;REALIZADO;2026-02-17T09:00:00-03:00
+EV-0102;Pedra Solar - Turnê Agora;Pedra Solar;SHOW;Arena Recifes;Recife;PE;16000;2026-01-05;2025-11-15;REALIZADO;2025-11-15T09:00:00-03:00
+EV-0103;O Mágico da Ilha;Cia. Gomes;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-03-24;2025-12-21;REALIZADO;2025-12-21T09:00:00-03:00
+EV-0104;Coral Sinfônico Vértice - Turnê Raízes;Coral Sinfônico Vértice;SHOW;Hall Campinas;Campinas;SP;7000;2026-09-03;2026-06-19;REALIZADO;2026-06-19T09:00:00-03:00
+EV-0105;Stand-up Noite Leve;Cia. Carvalho;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2025-10-25;2025-09-03;REALIZADO;2025-09-03T09:00:00-03:00
+EV-0106;O Mágico da Ilha;Cia. Dias;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2025-11-11;2025-07-19;REALIZADO;2025-07-19T09:00:00-03:00
+EV-0107;Coral Sinfônico Vértice - Turnê Agora;Coral Sinfônico Vértice;show;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-11-07;2026-07-17;REALIZADO;2026-07-17T09:00:00-03:00
+EV-0108;Ana Vitral - Turnê Infinito;Ana Vitral;SHOW;Arena Ipê;Goiânia;GO;14000;2026-10-24;2026-07-31;REALIZADO;2026-07-31T09:00:00-03:00
+EV-0109;Leões do Norte x Falcões AC;NULL;ESPORTE;Arena Horizonte;São Paulo;SP;45000;07/09/2026;2026-07-28;REALIZADO;2026-07-28T09:00:00-03:00
+EV-0110;Samba da Esquina - Turnê Viagem;Samba da Esquina;SHOW;Arena dos Pampas;Porto Alegre;RS;25000;13/02/2026;2025-11-15;REALIZADO;2025-11-15T09:00:00-03:00
+EV-0111;Os Sertanejos do Vale - Turnê Viagem;Os Sertanejos do Vale;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-02-08;2025-12-28;REALIZADO;2025-12-28T09:00:00-03:00
+EV-0112;Samba da Esquina - Turnê Agora;Samba da Esquina;SHOW;Centro Cerrado;Brasília;DF;18000;2026-02-14;2025-12-30;REALIZADO;2025-12-30T09:00:00-03:00
+EV-0113;Duo Cafezal - Turnê Agora;Duo Cafezal;show;Casa Atlântica;Rio de Janeiro;RJ;8000;22/10/2025;2025-08-14;REALIZADO;2025-08-14T09:00:00-03:00
+EV-0114;Coletivo Asfalto - Turnê Luz;Coletivo Asfalto;SHOW;Arena Farol;Salvador;BA;22000;2026-10-01;2026-08-14;REALIZADO;2026-08-14T09:00:00-03:00
+EV-0115;Maré Cheia - Turnê Viagem;Maré Cheia;SHOW;Hall Campinas;Campinas;SP;7.000;28/12/2025;2025-10-30;REALIZADO;2025-10-30T09:00:00-03:00
+EV-0116;Comédia em Três Tempos;Cia. Rodrigues;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-06-14;2026-05-12;REALIZADO;2026-05-12T09:00:00-03:00
+EV-0117;Pedra Solar - Turnê Agora;Pedra Solar;SHOW;Arena Serra Verde;Belo Horizonte;MG;20000;2025-11-15;2025-10-07;REALIZADO;2025-10-07T09:00:00-03:00
+EV-0118;Stand-up Noite Leve;Cia. Rocha;TEATRO;Teatro Jangada;Fortaleza;CE;2200;2026-07-01;2026-03-21;REALIZADO;2026-03-21T09:00:00-03:00
+EV-0119;Samba da Esquina - Turnê Raízes;Samba da Esquina;SHOW;Arena Farol;Salvador;BA;22000;2026-07-17;2026-05-21;REALIZADO;2026-05-21T09:00:00-03:00
+EV-0120;Maré Cheia - Turnê Infinito;Maré Cheia;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2027-02-15;2026-08-01;ADIADO;2026-08-10T10:00:00-03:00
+EV-0121;Orquestra Brisa - Turnê Viagem;Orquestra Brisa;SHOW;Arena Recifes;Recife;PE;16000;2026-11-17;2026-08-01;REALIZADO;2026-08-01T09:00:00-03:00
+EV-0122;Os Sertanejos do Vale - Turnê Luz;Os Sertanejos do Vale;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-10-22;2026-08-10;REALIZADO;2026-08-10T09:00:00-03:00
+EV-0123;Banda Farol Azul - Turnê Viagem;Banda Farol Azul;SHOW;Centro Cerrado;Brasília;DF;18000;2026-07-13;2026-05-23;REALIZADO;2026-05-23T09:00:00-03:00
+EV-0124;Festival Noites de Ouro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-07-06;2026-03-29;REALIZADO;2026-03-29T09:00:00-03:00
+EV-0125;Rock Cardeal - Turnê Infinito;Rock Cardeal;show;Hall Campinas;Campinas;SP;7000;2026-03-20;2026-02-14;REALIZADO;2026-02-14T09:00:00-03:00
+EV-0126;Festival Verão Sonoro;Vários;FESTIVAL;Parque Expo Sul;São Paulo;SP;80000;2026-07-01;2026-04-21;REALIZADO;2026-04-21T09:00:00-03:00
+EV-0127;O Último Ato;Cia. Ribeiro;TEATRO;Teatro Lumière;São Paulo;SP;1800;2026-04-26;2026-01-24;REALIZADO;2026-01-24T09:00:00-03:00
+EV-0128;Maré Cheia - Turnê Viagem;Maré Cheia;SHOW;Arena Recifes;Recife;PE;16000;2026-08-03;2026-05-04;REALIZADO;2026-05-04T09:00:00-03:00
+EV-0129;Duo Cafezal - Turnê Agora;Duo Cafezal;show;Arena Ipê;Goiânia;GO;14000;2026-03-21;2025-12-06;REALIZADO;2025-12-06T09:00:00-03:00
+EV-0130;Banda Farol Azul - Turnê Raízes;Banda Farol Azul;SHOW;Arena Ipê;Goiânia;GO;14000;2026-07-18;2026-04-11;REALIZADO;2026-04-11T09:00:00-03:00
+EV-0131;João Ladeira - Turnê Luz;João Ladeira;SHOW;Espaço Ilha;Florianópolis;SC;9000;2026-02-15;2025-12-04;REALIZADO;2025-12-04T09:00:00-03:00
+EV-0132;Banda Farol Azul - Turnê Agora;Banda Farol Azul;SHOW;Arena Ipê;Goiânia;GO;14000;2026-03-27;2025-12-24;REALIZADO;2025-12-24T09:00:00-03:00
+EV-0133;Banda Farol Azul - Turnê Luz;Banda Farol Azul;SHOW;Estádio Maré Alta;Rio de Janeiro;RJ;60000;2026-02-17;2025-12-04;REALIZADO;2025-12-04T09:00:00-03:00
+EV-0134;Trio Ventania - Turnê Raízes;Trio Ventania;SHOW;Espaço Ilha;Florianópolis;SC;9000;2026-12-09;2026-08-14;A_REALIZAR;2026-08-14T09:00:00-03:00
+EV-0135;Lua de Cristal - Turnê Agora;Lua de Cristal;SHOW;Centro Cerrado;Brasília;DF;18.000;2025-11-13;2025-08-09;REALIZADO;2025-08-09T09:00:00-03:00
+EV-0136;Os Sertanejos do Vale - Turnê Luz;Os Sertanejos do Vale;SHOW;Hall Campinas;Campinas;SP;7000;26/10/2025;2025-09-11;REALIZADO;2025-09-11T09:00:00-03:00
+EV-0137;O Último Ato;Cia. Silva;TEATRO;Teatro Jangada;Fortaleza;CE;2.200;09/03/2026;2026-01-13;REALIZADO;2026-01-13T09:00:00-03:00
+EV-0138;  OS NAVEGANTES - TURNÊ AGORA;Os Navegantes;SHOW;Arena Ipê;Goiânia;GO;14000;2026-03-12;2025-12-04;REALIZADO;2025-12-04T09:00:00-03:00
+EV-0139;Pedra Solar - Turnê Viagem;Pedra Solar;SHOW;Casa Atlântica;Rio de Janeiro;RJ;8000;2026-11-14;2026-08-06;REALIZADO;2026-08-06T09:00:00-03:00
+EV-0140;  ROCK CARDEAL - TURNÊ INFINITO;Rock Cardeal;show;Espaço Pinhal;Curitiba;PR;15000;2026-01-12;2025-11-12;REALIZADO;2025-11-12T09:00:00-03:00
+EV-0141;  DJ NEON TROPICAL - TURNÊ LUZ;DJ Neon Tropical;SHOW;Arena Farol;Salvador;BA;22000;2026-06-18;2026-01-30;REALIZADO;2026-04-15T10:00:00-03:00
+EV-0142;Os Sertanejos do Vale - Turnê Infinito;Os Sertanejos do Vale;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-12-09;2026-08-31;A_REALIZAR;2026-08-31T09:00:00-03:00
+EV-0143;Musical Estrelas;Cia. Nascimento;TEATRO;Teatro Lumière;São Paulo;SP;1800;2026-05-04;2026-02-26;REALIZADO;2026-02-26T09:00:00-03:00
+EV-0144;Os Navegantes - Turnê Luz;Os Navegantes;SHOW;Arena dos Pampas;Porto Alegre;RS;25.000;2025-10-22;2025-09-16;REALIZADO;2025-09-16T09:00:00-03:00
+EV-0145;Banda Farol Azul - Turnê Viagem;Banda Farol Azul;SHOW;Espaço Ilha;Florianópolis;SC;9000;2026-02-15;2025-12-21;REALIZADO;2025-12-21T09:00:00-03:00
+EV-0146;Duo Cafezal - Turnê Viagem;Duo Cafezal;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-07-12;2026-04-25;REALIZADO;2026-04-25T09:00:00-03:00
+EV-0147;Duo Cafezal - Turnê Luz;Duo Cafezal;SHOW;Arena Recifes;Recife;PE;16000;2026-04-01;2025-12-06;REALIZADO;2025-12-06T09:00:00-03:00
+EV-0148;Os Sertanejos do Vale - Turnê Agora;Os Sertanejos do Vale;SHOW;Pavilhão Aurora;São Paulo;SP;12000;2026-05-27;2026-03-27;REALIZADO;2026-03-27T09:00:00-03:00
+EV-0149;Maré Cheia - Turnê Raízes;Maré Cheia;SHOW;Espaço Pinhal;Curitiba;PR;15000;2025-10-24;2025-08-20;REALIZADO;2025-08-20T09:00:00-03:00
+EV-0150;Maré Cheia - Turnê Viagem;Maré Cheia;SHOW;Espaço Pinhal;Curitiba;PR;15000;2026-10-07;2026-08-15;REALIZADO;2026-08-15T09:00:00-03:00
+EV-0151;  FESTIVAL VERÃO SONORO;Vários;FESTIVAL;Arena Recifes;Recife;PE;7000;2027-02-14;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0152;O Mágico da Ilha;Cia. Oliveira;TEATRO;Teatro do Cais;Rio de Janeiro;RJ;1800;16/12/2026;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0153;Rádio Satélite - Turnê Agora;Rádio Satélite;SHOW;Arena Serra Verde;Belo Horizonte;MG;12000;2027-01-22;2026-11-06;A_REALIZAR;2026-11-06T09:00:00-03:00
+EV-0154;Banda Farol Azul - Turnê Infinito;Banda Farol Azul;SHOW;Centro Cerrado;Brasília;DF;20000;2027-03-16;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0155;Duo Cafezal - Turnê Agora;Duo Cafezal;SHOW;Espaço Ilha;Florianópolis;SC;20000;2027-02-13;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0156;Maré Cheia - Turnê Infinito;Maré Cheia;SHOW;Centro Cerrado;Brasília;DF;7000;2027-01-02;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0157;O Último Ato;Cia. Silva;TEATRO;Teatro Jangada;Fortaleza;CE;1800;2027-03-27;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0158;Rock Cardeal - Turnê Infinito;Rock Cardeal;SHOW;Arena Serra Verde;Belo Horizonte;MG;18000;2027-02-11;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0159;Pedra Solar - Turnê Agora;Pedra Solar;SHOW;Arena Ipê;Goiânia;GO;20000;2027-01-17;2026-11-23;A_REALIZAR;2026-11-23T09:00:00-03:00
+EV-0160;Maré Cheia - Turnê Agora;Maré Cheia;SHOW;Espaço Pinhal;Curitiba;PR;7.000;2027-03-26;2026-11-01;A_REALIZAR;2026-11-01T09:00:00-03:00
+EV-0161;  LINA PRISMA - TURNÊ INFINITO;Lina Prisma;SHOW;Centro Cerrado;Brasília;DF;20000;2027-03-15;2026-11-22;A_REALIZAR;2026-11-22T09:00:00-03:00
+EV-0162;Orquestra Brisa - Turnê Luz;Orquestra Brisa;SHOW;Hall Campinas;Campinas;SP;20.000;2026-12-10;2026-11-04;A_REALIZAR;2026-11-04T09:00:00-03:00
+EV-0163;Ana Vitral - Turnê Infinito;Ana Vitral;show;Parque Expo Sul;São Paulo;SP;40000;2027-03-24;2026-12-26;A_REALIZAR;2026-12-26T09:00:00-03:00
+EV-0164;Rádio Satélite - Turnê Viagem;Rádio Satélite;SHOW;Parque Expo Sul;São Paulo;SP;30000;2027-04-04;2026-12-28;A_REALIZAR;2026-12-28T09:00:00-03:00
+EV-0165;Falcões AC x Leões do Norte;NULL;esporte;Pavilhão Aurora;São Paulo;SP;7.000;2027-03-25;2026-12-19;A_REALIZAR;2026-12-19T09:00:00-03:00
+EV-0166;MC Horizonte - Turnê Viagem;MC Horizonte;SHOW;Parque Expo Sul;São Paulo;SP;40000;2027-05-03;2026-12-05;A_REALIZAR;2026-12-05T09:00:00-03:00
+EV-0167;João Ladeira - Turnê Infinito;João Ladeira;SHOW;Espaço Pinhal;Curitiba;PR;22.000;05/02/2027;2026-12-18;A_REALIZAR;2026-12-18T09:00:00-03:00
+EV-0168;  MC HORIZONTE - TURNÊ RAÍZES;MC Horizonte;SHOW;Centro Cerrado;Brasília;DF;7.000;2027-04-09;2026-12-06;A_REALIZAR;2026-12-06T09:00:00-03:00
+EV-0169;  RÁDIO SATÉLITE;Rádio Satélite;SHOW;Pavilhão Aurora;São Paulo;SP;22000;2027-04-26;2026-12-02;A_REALIZAR;2026-12-02T09:00:00-03:00
+EV-0170;Coletivo Asfalto - Turnê Agora;Coletivo Asfalto;SHOW;Arena dos Pampas;Porto Alegre;RS;12000;2027-05-01;2026-12-28;A_REALIZAR;2026-12-28T09:00:00-03:00
+EV-0171;Coletivo Asfalto - Turnê Luz;Coletivo Asfalto;show;Espaço Pinhal;Curitiba;PR;18000;2027-02-04;2026-12-28;A_REALIZAR;2026-12-28T09:00:00-03:00
+EV-0172;  ROCK CARDEAL - TURNÊ AGORA;Rock Cardeal;SHOW;Arena Serra Verde;Belo Horizonte;MG;12000;2027-03-31;2026-12-14;A_REALIZAR;2026-12-14T09:00:00-03:00
+EV-0173;Samba da Esquina - Turnê Luz;Samba da Esquina;SHOW;Espaço Ilha;Florianópolis;SC;22000;2027-03-12;2026-12-30;A_REALIZAR;2026-12-30T09:00:00-03:00
+EV-0174;Coletivo Asfalto - Turnê Raízes;Coletivo Asfalto;SHOW;Centro Cerrado;Brasília;DF;20000;2027-03-24;2026-12-06;A_REALIZAR;2026-12-06T09:00:00-03:00
